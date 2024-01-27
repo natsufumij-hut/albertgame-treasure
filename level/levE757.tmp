@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjq14ysdujg1d"]
+
+[ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="1_3f4bj"]
+[ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="2_h8yn1"]
+[ext_resource type="Script" path="res://level/tile_animated.gd" id="2_moluu"]
+[ext_resource type="PackedScene" uid="uid://b3s6tvhj3mq14" path="res://ui/hud.tscn" id="4_o7dh3"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
+tile_set = ExtResource("1_3f4bj")
+format = 2
+layer_0/name = "地形"
+layer_0/tile_data = PackedInt32Array(524287, 458752, 8, 589823, 458752, 8, 458752, 458752, 8, 524288, 458752, 8, 458753, 458752, 8, 524289, 458752, 8, 458754, 458752, 8, 524290, 458752, 8, 458755, 458752, 8, 524291, 458752, 8, 458756, 458752, 8, 524292, 458752, 8, 458757, 458752, 8, 524293, 458752, 8, 458758, 458752, 8, 524294, 458752, 8, 458759, 458752, 8, 524295, 458752, 8, 458760, 458752, 8, 524296, 458752, 8, 458761, 458752, 8, 524297, 458752, 8, 458762, 458752, 8, 524298, 458752, 8, 458763, 458752, 8, 524299, 458752, 8, 458764, 458752, 8, 524300, 458752, 8)
+layer_1/name = "装饰"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "陷阱"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "干涉地形"
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "可收集道具"
+layer_4/tile_data = PackedInt32Array(262144, 262146, 2, 262145, 262146, 2)
+layer_5/name = "可交互道具"
+layer_5/tile_data = PackedInt32Array(393216, 196610, 1)
+layer_6/name = "干涉形道具"
+layer_6/tile_data = PackedInt32Array()
+script = ExtResource("2_moluu")
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_h8yn1")]
+position = Vector2(250, 352)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Hud" parent="." instance=ExtResource("4_o7dh3")]

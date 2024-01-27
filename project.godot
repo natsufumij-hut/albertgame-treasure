@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="treasure-g"
+run/main_scene="res://game/game_manager.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerAsset="*res://signal/player_asset.gd"
+PlayerStats="*res://signal/player_stats.gd"
+GameData="*res://game/game_data.gd"
+GameSignal="*res://signal/game_signal.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")
+
+[layer_names]
+
+2d_physics/layer_1="地形"
+2d_physics/layer_2="玩家"
+2d_physics/layer_3="陷阱"
+2d_physics/layer_4="物品"
+2d_physics/layer_5="敌人"
+2d_physics/layer_6="领域"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=2
+textures/vram_compression/import_etc2_astc=true

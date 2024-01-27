@@ -1,0 +1,145 @@
+[gd_scene load_steps=12 format=3 uid="uid://da857552v62gl"]
+
+[ext_resource type="Script" path="res://ui/play_ui.gd" id="1_6ym7j"]
+[ext_resource type="Texture2D" uid="uid://cmj5tfhxfijih" path="res://asset/vector_whiteIcons.svg" id="1_kgmqn"]
+[ext_resource type="Texture2D" uid="uid://bna01ncblg0gu" path="res://asset/vector_blackIcons.svg" id="2_8cn62"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpd5q"]
+atlas = ExtResource("1_kgmqn")
+region = Rect2(356, 251, 30, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b75ai"]
+atlas = ExtResource("1_kgmqn")
+region = Rect2(456, 251, 30, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcopm"]
+atlas = ExtResource("1_kgmqn")
+region = Rect2(53, 3, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x1ms"]
+atlas = ExtResource("2_8cn62")
+region = Rect2(53, 3, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llxse"]
+atlas = ExtResource("1_kgmqn")
+region = Rect2(106, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s2tv"]
+atlas = ExtResource("2_8cn62")
+region = Rect2(106, 0, 28, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh1xn"]
+atlas = ExtResource("1_kgmqn")
+region = Rect2(3, 3, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0gin"]
+atlas = ExtResource("2_8cn62")
+region = Rect2(3, 3, 34, 28)
+
+[node name="PlayUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 32.0
+offset_top = -80.0
+offset_right = 32.0
+offset_bottom = -80.0
+script = ExtResource("1_6ym7j")
+
+[node name="Use" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 0
+offset_left = 432.0
+offset_top = -88.0
+offset_right = 536.0
+offset_bottom = 16.0
+texture_normal = SubResource("AtlasTexture_xpd5q")
+texture_pressed = SubResource("AtlasTexture_b75ai")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PCPlay" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 24.0
+offset_top = -88.0
+offset_right = 64.0
+offset_bottom = -48.0
+
+[node name="Left" type="TextureButton" parent="PCPlay"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 136.0
+offset_bottom = 104.0
+texture_normal = SubResource("AtlasTexture_kcopm")
+texture_pressed = SubResource("AtlasTexture_6x1ms")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Jump" type="TextureButton" parent="PCPlay"]
+custom_minimum_size = Vector2(56, 72)
+layout_mode = 0
+offset_left = 136.0
+offset_top = -136.0
+offset_right = 248.0
+texture_normal = SubResource("AtlasTexture_llxse")
+texture_pressed = SubResource("AtlasTexture_3s2tv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Right" type="TextureButton" parent="PCPlay"]
+custom_minimum_size = Vector2(96, 80)
+layout_mode = 0
+offset_left = 248.0
+offset_top = -8.0
+offset_right = 392.0
+offset_bottom = 104.0
+texture_normal = SubResource("AtlasTexture_jh1xn")
+texture_pressed = SubResource("AtlasTexture_w0gin")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MobilePlay" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 8.0
+offset_top = -88.0
+offset_right = 48.0
+offset_bottom = -48.0
+
+[node name="Left" type="TouchScreenButton" parent="MobilePlay"]
+position = Vector2(17, 1)
+scale = Vector2(3.97059, 3.39286)
+texture_normal = SubResource("AtlasTexture_kcopm")
+texture_pressed = SubResource("AtlasTexture_6x1ms")
+
+[node name="Jump" type="TouchScreenButton" parent="MobilePlay"]
+position = Vector2(144, -128)
+scale = Vector2(4.28571, 3.76471)
+texture_normal = SubResource("AtlasTexture_llxse")
+texture_pressed = SubResource("AtlasTexture_3s2tv")
+
+[node name="Right" type="TouchScreenButton" parent="MobilePlay"]
+position = Vector2(264, -8)
+scale = Vector2(4.23529, 4)
+texture_normal = SubResource("AtlasTexture_jh1xn")
+texture_pressed = SubResource("AtlasTexture_w0gin")
+
+[node name="Log" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -312.0
+offset_right = 416.0
+offset_bottom = -248.0
+
+[connection signal="pressed" from="Use" to="." method="_on_use_pressed"]
+[connection signal="button_down" from="PCPlay/Left" to="." method="_on_leff_button_down"]
+[connection signal="button_up" from="PCPlay/Left" to="." method="_on_leff_button_up"]
+[connection signal="button_down" from="PCPlay/Jump" to="." method="_on_up_button_down"]
+[connection signal="button_up" from="PCPlay/Jump" to="." method="_on_up_button_up"]
+[connection signal="button_down" from="PCPlay/Right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="PCPlay/Right" to="." method="_on_right_button_up"]
+[connection signal="pressed" from="MobilePlay/Left" to="." method="_on_leff_button_down"]
+[connection signal="released" from="MobilePlay/Left" to="." method="_on_leff_button_up"]
+[connection signal="pressed" from="MobilePlay/Jump" to="." method="_on_up_button_down"]
+[connection signal="released" from="MobilePlay/Jump" to="." method="_on_up_button_up"]
+[connection signal="pressed" from="MobilePlay/Right" to="." method="_on_right_button_down"]
+[connection signal="released" from="MobilePlay/Right" to="." method="_on_right_button_up"]

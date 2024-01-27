@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://h1dkstjnnim1"]
+
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="1_w64te"]
+[ext_resource type="Texture2D" uid="uid://c82mpw81ho4v1" path="res://asset/tiles_spritesheet.png" id="2_o0ac6"]
+[ext_resource type="Script" path="res://ui/snario_panel.gd" id="3_6x8hb"]
+[ext_resource type="Texture2D" uid="uid://cmj5tfhxfijih" path="res://asset/vector_whiteIcons.svg" id="4_d4l18"]
+[ext_resource type="Texture2D" uid="uid://bna01ncblg0gu" path="res://asset/vector_blackIcons.svg" id="5_057x2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcpyg"]
+atlas = ExtResource("2_o0ac6")
+region = Rect2(0, 432, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dex8"]
+atlas = ExtResource("4_d4l18")
+region = Rect2(157, 54, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl248"]
+atlas = ExtResource("5_057x2")
+region = Rect2(157, 54, 28, 28)
+
+[node name="SnarioPanel" type="NinePatchRect" node_paths=PackedStringArray("readTimer", "label")]
+offset_right = 334.0
+offset_bottom = 132.0
+theme = ExtResource("1_w64te")
+texture = SubResource("AtlasTexture_kcpyg")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 12
+patch_margin_top = 16
+patch_margin_right = 12
+patch_margin_bottom = 13
+script = ExtResource("3_6x8hb")
+readTimer = NodePath("Timer")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "练习稿125张（草稿30、线稿30、上色30、摹写30、原创5）
+初步确定了绘画的成就
+"
+autowrap_mode = 1
+
+[node name="Skip" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = -13.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_6dex8")
+texture_pressed = SubResource("AtlasTexture_gl248")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="pressed" from="Skip" to="." method="click"]
+[connection signal="timeout" from="Timer" to="." method="readWord"]

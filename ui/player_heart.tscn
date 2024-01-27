@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://by4dt2fkfixvw"]
+
+[ext_resource type="Texture2D" uid="uid://bd7bg6sbuc3wb" path="res://asset/hud_spritesheet.png" id="1_055bg"]
+[ext_resource type="Script" path="res://ui/player_heart.gd" id="1_g8cqh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h506g"]
+atlas = ExtResource("1_055bg")
+region = Rect2(0, 47, 53, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bu6u"]
+atlas = ExtResource("1_055bg")
+region = Rect2(0, 94, 53, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8hat"]
+atlas = ExtResource("1_055bg")
+region = Rect2(0, 94, 53, 45)
+
+[node name="PlayerHeart" type="HBoxContainer"]
+offset_right = 53.0
+offset_bottom = 45.0
+script = ExtResource("1_g8cqh")
+empty = SubResource("AtlasTexture_h506g")
+full = SubResource("AtlasTexture_4bu6u")
+
+[node name="LifeTemp" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life1" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life4" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life5" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life6" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life7" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life8" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")
+
+[node name="Life9" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = SubResource("AtlasTexture_r8hat")

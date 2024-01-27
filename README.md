@@ -1,2 +1,0 @@
-# treasure-h
-Treasure Hunting.

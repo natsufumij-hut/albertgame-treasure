@@ -1,0 +1,220 @@
+[gd_scene load_steps=14 format=3 uid="uid://csx0bp7vocdfe"]
+
+[ext_resource type="Texture2D" uid="uid://c82mpw81ho4v1" path="res://asset/tiles_spritesheet.png" id="1_5wc6m"]
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="1_xaqu8"]
+[ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="2_4qont"]
+[ext_resource type="Script" path="res://ui/items_box.gd" id="2_36pk7"]
+[ext_resource type="Texture2D" uid="uid://bv8evv0bkfji5" path="res://asset/items_2.tres" id="4_0pxbi"]
+[ext_resource type="Script" path="res://ui/items_button.gd" id="5_6ojvx"]
+[ext_resource type="Texture2D" uid="uid://bd7bg6sbuc3wb" path="res://asset/hud_spritesheet.png" id="5_aqpt0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwhdy"]
+atlas = ExtResource("1_5wc6m")
+region = Rect2(0, 432, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wybs6"]
+atlas = ExtResource("2_4qont")
+region = Rect2(305, 378, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rou6e"]
+atlas = ExtResource("2_4qont")
+region = Rect2(77, 377, 60, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e38uh"]
+atlas = ExtResource("4_0pxbi")
+region = Rect2(88, 36, 45, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8410n"]
+atlas = ExtResource("2_4qont")
+region = Rect2(440, 372, 55, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_648kf"]
+atlas = ExtResource("5_aqpt0")
+region = Rect2(98, 147, 46, 36)
+
+[node name="ItemsBox" type="VBoxContainer"]
+offset_right = 48.0
+offset_bottom = 268.0
+theme = ExtResource("1_xaqu8")
+script = ExtResource("2_36pk7")
+
+[node name="Coin" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vwhdy")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 13
+patch_margin_top = 16
+patch_margin_right = 15
+patch_margin_bottom = 14
+
+[node name="Button" type="TextureButton" parent="Coin"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_wybs6")
+stretch_mode = 3
+script = ExtResource("5_6ojvx")
+code = "Coin"
+
+[node name="Label" type="Label" parent="Coin/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Key" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vwhdy")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 13
+patch_margin_top = 16
+patch_margin_right = 15
+patch_margin_bottom = 14
+
+[node name="Button" type="TextureButton" parent="Key"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_rou6e")
+stretch_mode = 3
+script = ExtResource("5_6ojvx")
+code = "Key"
+
+[node name="Label" type="Label" parent="Key/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mashroom" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vwhdy")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 13
+patch_margin_top = 16
+patch_margin_right = 15
+patch_margin_bottom = 14
+
+[node name="Button" type="TextureButton" parent="Mashroom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_e38uh")
+stretch_mode = 3
+script = ExtResource("5_6ojvx")
+code = "Mashroom"
+
+[node name="Label" type="Label" parent="Mashroom/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bomb" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vwhdy")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 13
+patch_margin_top = 16
+patch_margin_right = 15
+patch_margin_bottom = 14
+
+[node name="Button" type="TextureButton" parent="Bomb"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_8410n")
+stretch_mode = 3
+script = ExtResource("5_6ojvx")
+code = "Bomb"
+
+[node name="Label" type="Label" parent="Bomb/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tai" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_vwhdy")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 13
+patch_margin_top = 16
+patch_margin_right = 15
+patch_margin_bottom = 14
+
+[node name="Button" type="TextureButton" parent="Tai"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_648kf")
+stretch_mode = 3
+script = ExtResource("5_6ojvx")
+code = "Tai"
+
+[node name="Label" type="Label" parent="Tai/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Coin/Button" to="Coin/Button" method="click"]
+[connection signal="pressed" from="Key/Button" to="Key/Button" method="click"]
+[connection signal="pressed" from="Mashroom/Button" to="Mashroom/Button" method="click"]
+[connection signal="pressed" from="Bomb/Button" to="Bomb/Button" method="click"]
+[connection signal="pressed" from="Tai/Button" to="Tai/Button" method="click"]
