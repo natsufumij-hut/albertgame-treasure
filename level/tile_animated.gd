@@ -7,6 +7,7 @@ extends TileMap
 class TileCodeIndex:
 	var source_id: int
 	var cord: Vector2i
+	var back_id: int = 0
 
 var marked:= false
 ## map<code-index>,codeIndex
@@ -18,6 +19,8 @@ var intCollide := PlayerInt.new()
 func _ready() -> void:
 	load_atlas_sources()
 	PlayerStats.int_tile.connect(int_collide)
+	LevelSignal.exchange_tile.connect(exchange_tile)
+	LevelSignal.clear_tile.connect(clear_tile)
 
 ## 导入TileSet的全部数据资源
 func load_atlas_sources():
@@ -38,8 +41,22 @@ func load_atlas_sources():
 					codeIndex.source_id=sid
 					var rc = code+String.num(index)
 					tileCodeMap[rc]=codeIndex
+			var count = atsource.get_alternative_tiles_count(qid)
+			for s in range(0,count):
+				var aid = atsource.get_alternative_tile_id(qid,s)
+				var acell = atsource.get_tile_data(qid,aid)
+				var code = acell.get_custom_data("TileCode")
+				var store = acell.get_custom_data("Store")
+				var index = acell.get_custom_data("Index")
+				store = store if store!=null else ""
+				if code!=null and code!="" and index!=null:
+					var codeIndex = TileCodeIndex.new()
+					codeIndex.cord=qid
+					codeIndex.source_id=sid
+					codeIndex.back_id=aid
+					var rc = code+String.num(index)+"/"+store
+					tileCodeMap[rc]=codeIndex			
 	print("导入完成。。。")
-
 
 func _physics_process(delta: float) -> void:
 	if marked:
@@ -105,3 +122,18 @@ func clear_tile(layer: int, veci: Vector2i):
 
 func int_collide(player: Player):
 	intCollide.int_tile(player,self)
+
+func exchange_tile(layer: int, pos: Vector2, tile_code: String, index: int, store: String=""):
+	var loc = to_local(pos)
+	var veci := local_to_map(loc)
+	var rp=""
+	if store!="":
+		rp = tile_code + String.num(index) + "/" +store
+	else:
+		rp = tile_code + String.num(index)
+	if !tileCodeMap.has(rp):
+		print("不存在tile ",rp)
+		return
+	var code_index = tileCodeMap[rp] as TileCodeIndex
+	if code_index!=null:
+		set_cell(layer,veci,code_index.source_id,code_index.cord,code_index.back_id)		

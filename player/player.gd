@@ -104,6 +104,8 @@ func hand_use(code: String, count: int):
 			go_perfect_guard()
 		"Mashroom":
 			PlayerStats.heal(1)
+		"Bomb":
+			shoot()
 
 func collect_hand(code: String):
 	param(itemTree,"HandGot",{})
@@ -137,6 +139,10 @@ func inWater():
 	print("speed ",speed)
 	print("jumpv ",jumpV)
 
+func inMagma():
+	damage_temp=PlayerStats.hp
+	param(stateTree,"Attacked",{})
+
 func outWater():
 	speed=SPEED
 	jumpV=JUMP_VELOCITY
@@ -145,3 +151,14 @@ func outWater():
 
 func trigger(id: String):
 	($SnarioPanel as SnarioPanel).trigger(id)
+
+func shoot():
+	var flip = animated.flip_h
+	var shootN := $Shoot as Node2D
+	shootN.scale.x = -1 if flip else 1
+	var marker := $Shoot/Marker2D as Marker2D
+	var bomb: = load("res://player/bomb.tscn") as PackedScene
+	var bombi = bomb.instantiate() as RigidBody2D
+	bombi.position=marker.global_position
+	LevelSignal.put_bullet.emit(bombi)
+	bombi.apply_impulse(Vector2(shootN.scale.x * 400,0),bombi.position)

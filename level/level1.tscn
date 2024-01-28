@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjq14ysdujg1d"]
+[gd_scene load_steps=16 format=3 uid="uid://bjq14ysdujg1d"]
 
 [ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="1_3f4bj"]
+[ext_resource type="Script" path="res://level/level_mechan.gd" id="1_5otxr"]
 [ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="2_h8yn1"]
 [ext_resource type="Script" path="res://level/tile_animated.gd" id="2_moluu"]
 [ext_resource type="PackedScene" uid="uid://b4nmw2lpleqln" path="res://enemy/slim.tscn" id="3_s1y1e"]
@@ -8,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b3s6tvhj3mq14" path="res://ui/hud.tscn" id="4_o7dh3"]
 [ext_resource type="Texture2D" uid="uid://cnlqi6jkxchbs" path="res://asset/bg.png" id="5_edy4h"]
 [ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="6_7ama1"]
+[ext_resource type="PackedScene" uid="uid://c1ib3r8sr3upa" path="res://enemy/barnacle.tscn" id="6_srfjw"]
 [ext_resource type="AudioStream" uid="uid://cchsg4p8q6c6l" path="res://asset/audio/green.mp3" id="7_y0qsh"]
+[ext_resource type="PackedScene" uid="uid://bnohktsqnal58" path="res://level/tile_generate_mark.tscn" id="12_bnyie"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fyj3v"]
 atlas = ExtResource("6_7ama1")
@@ -23,6 +26,7 @@ atlas = ExtResource("6_7ama1")
 region = Rect2(0, 146, 128, 71)
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_5otxr")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(30, 67)
@@ -39,7 +43,7 @@ layer_3/tile_data = PackedInt32Array(524297, 458752, 3, 524298, 458752, 3, 52429
 layer_4/name = "可收集道具"
 layer_4/tile_data = PackedInt32Array(131078, 65538, 2, 196617, 262146, 2, 262154, 262146, 2, 393235, 65538, 2, 196641, 262146, 2, 196640, 262146, 2, 131095, 262146, 2, 131094, 262146, 2, 42, 262146, 2, 65578, 262146, 2, 131114, 262146, 2, 458771, 393218, 3, 393248, 1, 1)
 layer_5/name = "可交互道具"
-layer_5/tile_data = PackedInt32Array(458787, 458754, 0, 327733, 589824, 5, -65538, 524288, 12, -2, 524288, 12, 65534, 524288, 12, 131070, 524288, 12, 196606, 524288, 12, 262142, 524288, 12, 327678, 524288, 12, 393214, 524288, 12, 458750, 524288, 12, 524286, 524288, 12, 589822, 524288, 12, -65537, 524288, 12, -1, 524288, 12, 65535, 524288, 12, 131071, 524288, 12, 196607, 524288, 12, 262143, 524288, 12, 327679, 524288, 12, 393215, 524288, 12, 458751, 524288, 12, 524287, 524288, 12, 589823, 524288, 12, -524233, 524288, 12, -458697, 524288, 12, -393161, 524288, 12, -327625, 524288, 12, -262089, 524288, 12, -196553, 524288, 12, -131017, 524288, 12, -65481, 524288, 12, 55, 524288, 12, 65591, 524288, 12, 131127, 524288, 12, 196663, 524288, 12, 262199, 524288, 12, 327735, 524288, 12, 393271, 524288, 12, 458807, 524288, 12, 524343, 524288, 12, -524232, 524288, 12, -458696, 524288, 12, -393160, 524288, 12, -327624, 524288, 12, -262088, 524288, 12, -196552, 524288, 12, -131016, 524288, 12, -65480, 524288, 12, 56, 524288, 12, 65592, 524288, 12, 131128, 524288, 12, 196664, 524288, 12, 262200, 524288, 12, 327736, 524288, 12, 393272, 524288, 12, 458808, 524288, 12, 524344, 524288, 12, 393222, 327681, 1, 393269, 589824, 65542)
+layer_5/tile_data = PackedInt32Array(458787, 458754, 0, -65538, 524288, 12, -2, 524288, 12, 65534, 524288, 12, 131070, 524288, 12, 196606, 524288, 12, 262142, 524288, 12, 327678, 524288, 12, 393214, 524288, 12, 458750, 524288, 12, 524286, 524288, 12, 589822, 524288, 12, -65537, 524288, 12, -1, 524288, 12, 65535, 524288, 12, 131071, 524288, 12, 196607, 524288, 12, 262143, 524288, 12, 327679, 524288, 12, 393215, 524288, 12, 458751, 524288, 12, 524287, 524288, 12, 589823, 524288, 12, -524233, 524288, 12, -458697, 524288, 12, -393161, 524288, 12, -327625, 524288, 12, -262089, 524288, 12, -196553, 524288, 12, -131017, 524288, 12, -65481, 524288, 12, 55, 524288, 12, 65591, 524288, 12, 131127, 524288, 12, 196663, 524288, 12, 262199, 524288, 12, 327735, 524288, 12, 393271, 524288, 12, 458807, 524288, 12, 524343, 524288, 12, -524232, 524288, 12, -458696, 524288, 12, -393160, 524288, 12, -327624, 524288, 12, -262088, 524288, 12, -196552, 524288, 12, -131016, 524288, 12, -65480, 524288, 12, 56, 524288, 12, 65592, 524288, 12, 131128, 524288, 12, 196664, 524288, 12, 262200, 524288, 12, 327736, 524288, 12, 393272, 524288, 12, 458808, 524288, 12, 524344, 524288, 12, 393222, 458754, 65536, 393262, 458754, 196608)
 layer_6/name = "干涉形道具"
 layer_6/tile_data = PackedInt32Array(196613, 196608, 0, 196614, 0, 0, 131085, 196608, 0, 131083, 196608, 0, 131084, 0, 0, 28, 0, 196618, 131086, 0, 9, 29, 0, 2, 30, 196608, 0, -458712, 0, 0, -458713, 0, 0, -458711, 0, 9, 196615, 0, 65545)
 script = ExtResource("2_moluu")
@@ -83,8 +87,11 @@ position = Vector2(85, 541)
 [node name="M6" type="Marker2D" parent="Enemy"]
 position = Vector2(424, 539)
 
+[node name="Barnacle" parent="Enemy" instance=ExtResource("6_srfjw")]
+position = Vector2(873, 463)
+
 [node name="Player" parent="." instance=ExtResource("2_h8yn1")]
-position = Vector2(911, 426)
+position = Vector2(473, 446)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 50
@@ -93,6 +100,8 @@ limit_right = 3850
 limit_bottom = 695
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+
+[node name="bullets" type="Node2D" parent="."]
 
 [node name="Hud" parent="." instance=ExtResource("4_o7dh3")]
 
@@ -134,5 +143,21 @@ texture = SubResource("AtlasTexture_83csm")
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_y0qsh")
 autoplay = true
+
+[node name="Tricks" type="Node2D" parent="."]
+
+[node name="Trick1" parent="Tricks" instance=ExtResource("12_bnyie")]
+position = Vector2(52, 535)
+
+[node name="Trick2" parent="Tricks" instance=ExtResource("12_bnyie")]
+position = Vector2(3772, 476)
+layer = 5
+tile_code = "DoorUp"
+
+[node name="Trick3" parent="Tricks" instance=ExtResource("12_bnyie")]
+position = Vector2(3771, 531)
+layer = 5
+tile_code = "Door"
+store = "2"
 
 [connection signal="timeout" from="TileMap/TileAnimatedTimer" to="TileMap" method="markAnimated"]

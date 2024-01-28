@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwonvgo02u8iy"]
+
+[ext_resource type="Texture2D" uid="uid://c82mpw81ho4v1" path="res://asset/tiles_spritesheet.png" id="1_8jha6"]
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="1_gk60k"]
+[ext_resource type="Script" path="res://ui/died.gd" id="3_r5shp"]
+[ext_resource type="AudioStream" uid="uid://0eqc0pgjg21y" path="res://asset/audio/error.ogg" id="4_km7df"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a6bi"]
+atlas = ExtResource("1_8jha6")
+region = Rect2(0, 432, 70, 70)
+
+[node name="Died" type="NinePatchRect"]
+offset_right = 382.0
+offset_bottom = 182.0
+theme = ExtResource("1_gk60k")
+texture = SubResource("AtlasTexture_7a6bi")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 12
+patch_margin_top = 16
+patch_margin_right = 13
+patch_margin_bottom = 12
+script = ExtResource("3_r5shp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -65.0
+offset_right = 130.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 42
+text = "You Dead"
+horizontal_alignment = 1
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 5.0
+offset_right = -15.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+
+[node name="Reload" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 139.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RELOAD"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_km7df")
+
+[connection signal="pressed" from="Exit" to="." method="exit"]
+[connection signal="pressed" from="Reload" to="." method="reload"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://c4eprnllagbxq"]
+[gd_scene load_steps=93 format=3 uid="uid://c4eprnllagbxq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_6cl71"]
 [ext_resource type="Texture2D" uid="uid://5tc41h4gls2d" path="res://asset/aliens.svg" id="1_tc20v"]
@@ -870,12 +870,33 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_tk5o0"]
+resource_name = "in_magma"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"inMagma"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hubs7"]
 _data = {
+"in_magma": SubResource("Animation_tk5o0"),
 "in_water": SubResource("Animation_hx1xf"),
 "normal": SubResource("Animation_k65t8"),
 "out_water": SubResource("Animation_myiex")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ipmd"]
+animation = &"in_magma"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_px5m3"]
 animation = &"in_water"
@@ -902,15 +923,21 @@ advance_condition = &"OutWater"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ivm64"]
+advance_mode = 2
+advance_condition = &"InMagma"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l1fln"]
 states/Start/position = Vector2(194, 67)
+states/in_magma/node = SubResource("AnimationNodeAnimation_5ipmd")
+states/in_magma/position = Vector2(249, 155)
 states/in_water/node = SubResource("AnimationNodeAnimation_px5m3")
 states/in_water/position = Vector2(425, 155)
 states/normal/node = SubResource("AnimationNodeAnimation_ljf8g")
 states/normal/position = Vector2(355, 67)
 states/out_water/node = SubResource("AnimationNodeAnimation_5qkp6")
-states/out_water/position = Vector2(579, 59)
-transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_gbkgn"), "normal", "in_water", SubResource("AnimationNodeStateMachineTransition_whftl"), "in_water", "out_water", SubResource("AnimationNodeStateMachineTransition_m8tei"), "out_water", "normal", SubResource("AnimationNodeStateMachineTransition_cmfaw")]
+states/out_water/position = Vector2(581, 67)
+transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_gbkgn"), "normal", "in_water", SubResource("AnimationNodeStateMachineTransition_whftl"), "in_water", "out_water", SubResource("AnimationNodeStateMachineTransition_m8tei"), "out_water", "normal", SubResource("AnimationNodeStateMachineTransition_cmfaw"), "normal", "in_magma", SubResource("AnimationNodeStateMachineTransition_ivm64")]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -1000,6 +1027,7 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_l1fln")
 anim_player = NodePath("InvPlayer")
+parameters/conditions/InMagma = false
 parameters/conditions/InWater = false
 parameters/conditions/OutWater = false
 
@@ -1014,3 +1042,8 @@ offset_left = 8.0
 offset_top = -184.0
 offset_right = 342.0
 offset_bottom = -52.0
+
+[node name="Shoot" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Shoot"]
+position = Vector2(67, 9)

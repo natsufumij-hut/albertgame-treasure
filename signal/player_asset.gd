@@ -4,6 +4,7 @@ signal update_asset(code: String, v: int)
 signal use_item(code: String, v: int)
 signal trick_on(code: String,store: String,layer: int, veci: Vector2i)
 signal trick_off()
+signal need_asset(code: String, v:int)
 
 var asset: Dictionary = {}
 var trick: String = ""
@@ -25,6 +26,7 @@ func use_asset(code: String, count: int)->bool:
 	temp-=count
 	if temp<0:
 		print("无法使用该资源，资源数量不足")
+		need_asset.emit(code,count)
 		return false
 	asset[code]=temp
 	print("使用 ",code)

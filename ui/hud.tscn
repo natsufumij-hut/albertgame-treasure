@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3s6tvhj3mq14"]
+[gd_scene load_steps=6 format=3 uid="uid://b3s6tvhj3mq14"]
 
 [ext_resource type="PackedScene" uid="uid://by4dt2fkfixvw" path="res://ui/player_heart.tscn" id="1_hqgis"]
 [ext_resource type="PackedScene" uid="uid://csx0bp7vocdfe" path="res://ui/items_box.tscn" id="2_i2kyp"]
 [ext_resource type="PackedScene" uid="uid://da857552v62gl" path="res://ui/play_ui.tscn" id="3_jbqnt"]
+[ext_resource type="PackedScene" uid="uid://bwonvgo02u8iy" path="res://ui/died.tscn" id="4_ajebt"]
+[ext_resource type="PackedScene" uid="uid://bxpmoi27u55wq" path="res://ui/need.tscn" id="4_du2ay"]
 
 [node name="Hud" type="CanvasLayer"]
 
@@ -34,3 +36,31 @@ offset_top = -88.0
 offset_right = 0.0
 offset_bottom = -88.0
 grow_vertical = 0
+
+[node name="Need" parent="." instance=ExtResource("4_du2ay")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -75.0
+offset_right = 184.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Died" parent="." instance=ExtResource("4_ajebt")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -91.0
+offset_right = 191.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2

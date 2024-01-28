@@ -457,7 +457,7 @@ advance_condition = &"EnemyEnter"
 advance_mode = 2
 advance_condition = &"EnemyExit"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cm0yx"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tkare"]
 states/AttackEnemy/node = SubResource("AnimationNodeStateMachine_4rk7k")
 states/AttackEnemy/position = Vector2(399, 221)
 states/End/position = Vector2(860, 100)
@@ -478,6 +478,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:parameters/conditions/Attacked")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5cmoi"]
@@ -581,7 +593,7 @@ size = Vector2(264, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6vjm"]
 size = Vector2(555, 162)
 
-[node name="Swarm" type="CharacterBody2D" node_paths=PackedStringArray("revert_node")]
+[node name="Swarm" type="CharacterBody2D" node_paths=PackedStringArray("revert_node") groups=["enemy"]]
 collision_layer = 16
 script = ExtResource("1_evc5y")
 revert_node = [NodePath("Head")]
@@ -596,11 +608,11 @@ position = Vector2(5.58794e-09, -14)
 rotation = -1.57881
 shape = SubResource("CapsuleShape2D_su4ny")
 
-[node name="ActionTree" type="AnimationTree" parent="."]
+[node name="ActionTree" type="AnimationTree" parent="." groups=["enemy"]]
 libraries = {
 "": SubResource("AnimationLibrary_nncpx")
 }
-tree_root = SubResource("AnimationNodeStateMachine_cm0yx")
+tree_root = SubResource("AnimationNodeStateMachine_tkare")
 anim_player = NodePath("ActionPlayer")
 parameters/conditions/EnemyEnter = false
 parameters/conditions/EnemyExit = false

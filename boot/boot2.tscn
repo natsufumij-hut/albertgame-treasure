@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3 uid="uid://s0tnl1gqpqif"]
+
+[ext_resource type="Script" path="res://boot/boot.gd" id="1_eglv1"]
+[ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="2_omp4u"]
+[ext_resource type="Script" path="res://level/tile_animated.gd" id="3_d7m3w"]
+[ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="4_4bs7l"]
+[ext_resource type="Texture2D" uid="uid://cnlqi6jkxchbs" path="res://asset/bg.png" id="5_gs1wt"]
+[ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="6_2k2gg"]
+[ext_resource type="AudioStream" uid="uid://cchsg4p8q6c6l" path="res://asset/audio/green.mp3" id="7_3cuwf"]
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="8_7gt0v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b04cy"]
+atlas = ExtResource("6_2k2gg")
+region = Rect2(0, 73, 129, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64juu"]
+atlas = ExtResource("6_2k2gg")
+region = Rect2(0, 146, 128, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vesol"]
+atlas = ExtResource("6_2k2gg")
+region = Rect2(0, 146, 128, 71)
+
+[node name="Boot2" type="Node2D"]
+script = ExtResource("1_eglv1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(229, -522)
+tile_set = ExtResource("2_omp4u")
+format = 2
+layer_0/name = "地形"
+layer_0/tile_data = PackedInt32Array(524283, 65536, 6, 589819, 65536, 6, 655355, 65536, 6, 720891, 65536, 6, 786427, 65536, 6, 851963, 65536, 6, 917499, 65536, 6, 983035, 65536, 6, 1048571, 65536, 6, 1114107, 65536, 6, 524284, 65536, 6, 589820, 65536, 6, 655356, 65536, 6, 720892, 65536, 6, 786428, 65536, 6, 851964, 65536, 6, 917500, 65536, 6, 983036, 65536, 6, 1048572, 65536, 6, 1114108, 65536, 6, 1114109, 65536, 6, 1114110, 65536, 6, 1114111, 65536, 6, 1048576, 65536, 6, 1048577, 65536, 6, 1048578, 65536, 6, 1048579, 65536, 6, 1048580, 65536, 6, 1048581, 65536, 6, 1048582, 65536, 6, 1048583, 65536, 6, 1048584, 65536, 6, 1048585, 65536, 6, 1048586, 65536, 6, 1048587, 65536, 6, 1048588, 65536, 6, 1048589, 65536, 6, 1048590, 65536, 6, 1048591, 65536, 6, 655375, 65536, 6, 720911, 65536, 6, 786447, 65536, 6, 851983, 65536, 6, 917519, 65536, 6, 983055, 65536, 6, 655374, 65536, 6, 458766, 65536, 6, 524302, 65536, 6, 589838, 65536, 6, 720910, 65536, 6, 786446, 65536, 6, 851982, 65536, 6, 917518, 65536, 6, 983054, 65536, 6, 458767, 65536, 6, 524303, 65536, 6, 589839, 65536, 6)
+layer_1/name = "装饰"
+layer_1/tile_data = PackedInt32Array(589840, 2, 0, 1048575, 262144, 3, 983043, 262144, 4)
+layer_2/name = "陷阱"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "干涉地形"
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "可收集道具"
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = "可交互道具"
+layer_5/tile_data = PackedInt32Array(851972, 262146, 2, 851973, 262146, 2, 851974, 262146, 2)
+layer_6/name = "干涉形道具"
+layer_6/tile_data = PackedInt32Array()
+script = ExtResource("3_d7m3w")
+
+[node name="TileAnimatedTimer" type="Timer" parent="TileMap"]
+wait_time = 0.5
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("4_4bs7l")]
+position = Vector2(320, 477)
+
+[node name="bullets" type="Node2D" parent="."]
+
+[node name="Paral" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Paral"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1500, 700)
+
+[node name="Bg" type="Sprite2D" parent="Paral/Sky"]
+position = Vector2(647, 437)
+scale = Vector2(6.66406, 3.42188)
+texture = ExtResource("5_gs1wt")
+
+[node name="Cloud" type="ParallaxLayer" parent="Paral"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1500, 800)
+
+[node name="Sprite2D" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(80, 364)
+texture = SubResource("AtlasTexture_b04cy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(260, 192)
+texture = SubResource("AtlasTexture_64juu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(370, 312)
+texture = SubResource("AtlasTexture_vesol")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(438, 472)
+texture = SubResource("AtlasTexture_vesol")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(408, 270)
+texture = SubResource("AtlasTexture_vesol")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3cuwf")
+autoplay = true
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="Start" type="Button" parent="hud"]
+offset_left = 125.0
+offset_top = 529.0
+offset_right = 247.0
+offset_bottom = 576.0
+theme = ExtResource("8_7gt0v")
+text = "Start"
+
+[node name="Exit" type="Button" parent="hud"]
+offset_left = 418.0
+offset_top = 529.0
+offset_right = 534.0
+offset_bottom = 576.0
+theme = ExtResource("8_7gt0v")
+text = "Exit
+"
+
+[connection signal="timeout" from="TileMap/TileAnimatedTimer" to="TileMap" method="markAnimated"]
+[connection signal="pressed" from="hud/Start" to="." method="start"]
+[connection signal="pressed" from="hud/Exit" to="." method="exit"]

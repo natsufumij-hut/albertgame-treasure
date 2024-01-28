@@ -31,6 +31,10 @@ func _physics_process(delta: float) -> void:
 			is_move=false
 			velocity.x=0
 
+func got_attacked():
+	no_speed()
+	param(stateTree,"Attacked",{})
+
 func dead():
 	param(stateTree,"Dead",{})
 

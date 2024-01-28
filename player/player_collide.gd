@@ -130,7 +130,7 @@ func push_item_store(cell: TileData,layer: int, coord: Vector2i):
 
 func pop_item_store(cell: TileData,layer: int, coord: Vector2i)->String:
 	var pid = String.num(layer)+String.num(coord.x)+String.num(coord.y)
-	var r= push_store_dict[pid]
+	var r= push_store_dict.get(pid,"")
 	push_store_dict.erase(pid)
 	return r
 

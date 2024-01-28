@@ -21,8 +21,6 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 const SPEED = 200.0
 var speed = SPEED
 
-@onready var animTree: = $AnimationTree as AnimationTree
-
 ## 血量,默认1
 @export var hp: int = 1
 var alive: bool = true
@@ -38,6 +36,10 @@ func got_attack(at: int):
 	if hp==0:
 		alive=false
 		dead()
+	got_attacked()
+
+func got_attacked():
+	pass
 
 func dead():
 	pass

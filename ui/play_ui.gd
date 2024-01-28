@@ -58,6 +58,21 @@ func _on_use_pressed() -> void:
 		match useCode:
 			"Door":
 				use_door(store)
+			"Switch":
+				use_switch(store)
+
+func use_switch(store: String):
+	var r = PlayerAsset.use_asset("Coin",1)
+	if !r:
+		return	
+	print("use switch ",store)
+	LevelSignal.clear_tile.emit(layer,veci)
+	if store.contains(","):
+		var sp = store.split(",")
+		for s: String in sp:
+			LevelSignal.use_trick.emit(s)
+	else:
+		LevelSignal.use_trick.emit(store)
 
 func use_door(store: String):
 	var r = PlayerAsset.use_asset("Key",1)
