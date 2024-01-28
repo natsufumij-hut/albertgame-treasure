@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjq14ysdujg1d"]
+[gd_scene load_steps=13 format=3 uid="uid://bjq14ysdujg1d"]
 
 [ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="1_3f4bj"]
 [ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="2_h8yn1"]
 [ext_resource type="Script" path="res://level/tile_animated.gd" id="2_moluu"]
+[ext_resource type="PackedScene" uid="uid://b4nmw2lpleqln" path="res://enemy/slim.tscn" id="3_s1y1e"]
+[ext_resource type="PackedScene" uid="uid://ciya1ykam4rce" path="res://enemy/swarm.tscn" id="4_1t3g0"]
 [ext_resource type="PackedScene" uid="uid://b3s6tvhj3mq14" path="res://ui/hud.tscn" id="4_o7dh3"]
 [ext_resource type="Texture2D" uid="uid://cnlqi6jkxchbs" path="res://asset/bg.png" id="5_edy4h"]
 [ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="6_7ama1"]
@@ -46,8 +48,43 @@ script = ExtResource("2_moluu")
 wait_time = 0.5
 autostart = true
 
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Slim" parent="Enemy" node_paths=PackedStringArray("p1", "p2") instance=ExtResource("3_s1y1e")]
+position = Vector2(1229, 415)
+p1 = NodePath("../M1")
+p2 = NodePath("../M2")
+
+[node name="M1" type="Marker2D" parent="Enemy"]
+position = Vector2(1147, 401)
+
+[node name="M2" type="Marker2D" parent="Enemy"]
+position = Vector2(1398, 402)
+
+[node name="Slim2" parent="Enemy" node_paths=PackedStringArray("p1", "p2") instance=ExtResource("3_s1y1e")]
+position = Vector2(1852, 556)
+p1 = NodePath("../M3")
+p2 = NodePath("../M4")
+
+[node name="M3" type="Marker2D" parent="Enemy"]
+position = Vector2(1747, 546)
+
+[node name="M4" type="Marker2D" parent="Enemy"]
+position = Vector2(1953, 546)
+
+[node name="Swarm" parent="Enemy" node_paths=PackedStringArray("p1", "p2") instance=ExtResource("4_1t3g0")]
+position = Vector2(219, 555)
+p1 = NodePath("../M5")
+p2 = NodePath("../M6")
+
+[node name="M5" type="Marker2D" parent="Enemy"]
+position = Vector2(85, 541)
+
+[node name="M6" type="Marker2D" parent="Enemy"]
+position = Vector2(424, 539)
+
 [node name="Player" parent="." instance=ExtResource("2_h8yn1")]
-position = Vector2(232, 402)
+position = Vector2(911, 426)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 50

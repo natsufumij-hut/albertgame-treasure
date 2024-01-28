@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://brfpdfbuhcqh1"]
+
+[ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="1_0cu8e"]
+[ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="2_5ao5l"]
+[ext_resource type="PackedScene" uid="uid://b4nmw2lpleqln" path="res://enemy/slim.tscn" id="3_f0yml"]
+
+[node name="Demo" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_0cu8e")
+format = 2
+layer_0/tile_data = PackedInt32Array(524287, 458752, 8, 458752, 458752, 8, 458753, 458752, 8, 458754, 458752, 8, 524291, 458752, 8, 524292, 458752, 8, 524293, 458752, 8, 524294, 458752, 8, 524295, 458752, 8, 524296, 458752, 8, 524297, 458752, 8, 524298, 458752, 8, 524299, 458752, 8, 524300, 458752, 8, 524301, 458752, 8, 524302, 458752, 8, 524303, 458752, 8, 524304, 458752, 8, 524305, 458752, 8, 524306, 458752, 8, 524307, 458752, 8, 589823, 458752, 8, 524288, 458752, 8, 524289, 458752, 8, 524290, 458752, 8, 458755, 458752, 8, 458756, 458752, 8, 458757, 458752, 8, 458758, 458752, 8, 458759, 458752, 8, 458760, 458752, 8, 458761, 458752, 8, 458762, 458752, 8, 458763, 458752, 8, 458764, 458752, 8, 458765, 458752, 8, 458766, 458752, 8, 458767, 458752, 8, 458768, 458752, 8, 458769, 458752, 8, 458770, 458752, 8, 458771, 458752, 8)
+
+[node name="Player" parent="." instance=ExtResource("2_5ao5l")]
+position = Vector2(159, 440)
+
+[node name="Slim" parent="." node_paths=PackedStringArray("p1", "p2") instance=ExtResource("3_f0yml")]
+position = Vector2(772, 464)
+p1 = NodePath("../M1")
+p2 = NodePath("../M2")
+
+[node name="M1" type="Marker2D" parent="."]
+position = Vector2(525, 430)
+
+[node name="M2" type="Marker2D" parent="."]
+position = Vector2(1069, 426)

@@ -612,6 +612,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateTree:parameters/conditions/Attacked")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_04myn"]
 _data = {
@@ -900,7 +912,7 @@ states/out_water/node = SubResource("AnimationNodeAnimation_5qkp6")
 states/out_water/position = Vector2(579, 59)
 transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_gbkgn"), "normal", "in_water", SubResource("AnimationNodeStateMachineTransition_whftl"), "in_water", "out_water", SubResource("AnimationNodeStateMachineTransition_m8tei"), "out_water", "normal", SubResource("AnimationNodeStateMachineTransition_cmfaw")]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_6cl71")
