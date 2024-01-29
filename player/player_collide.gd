@@ -112,6 +112,7 @@ func handle_push_item(layer: int, veci: Vector2i, player: Player,cell: TileData,
 	if player.current_frame_velocity.y>=0:
 		return
 	var index = cell.get_custom_data("Index")
+	player.velocity.y=10
 	player.tiled()
 	if index==2:
 		print("砸碎这个方块,生成对应的东西")

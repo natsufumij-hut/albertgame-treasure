@@ -46,6 +46,8 @@ script = ExtResource("2_n5aev")
 wait_time = 0.5
 autostart = true
 
+[node name="Enemy" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("3_uf4m5")]
 position = Vector2(295, 578)
 

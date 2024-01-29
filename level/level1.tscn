@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjq14ysdujg1d"]
+[gd_scene load_steps=17 format=3 uid="uid://bjq14ysdujg1d"]
 
 [ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="1_3f4bj"]
 [ext_resource type="Script" path="res://level/level_mechan.gd" id="1_5otxr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cnlqi6jkxchbs" path="res://asset/bg.png" id="5_edy4h"]
 [ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="6_7ama1"]
 [ext_resource type="PackedScene" uid="uid://c1ib3r8sr3upa" path="res://enemy/barnacle.tscn" id="6_srfjw"]
+[ext_resource type="PackedScene" uid="uid://2j11h5hs6vq4" path="res://enemy/fly.tscn" id="7_57v6u"]
 [ext_resource type="AudioStream" uid="uid://cchsg4p8q6c6l" path="res://asset/audio/green.mp3" id="7_y0qsh"]
 [ext_resource type="PackedScene" uid="uid://bnohktsqnal58" path="res://level/tile_generate_mark.tscn" id="12_bnyie"]
 
@@ -89,6 +90,17 @@ position = Vector2(424, 539)
 
 [node name="Barnacle" parent="Enemy" instance=ExtResource("6_srfjw")]
 position = Vector2(873, 463)
+
+[node name="Fly" parent="Enemy" node_paths=PackedStringArray("p1", "p2") instance=ExtResource("7_57v6u")]
+position = Vector2(1407, 229)
+p1 = NodePath("../M7")
+p2 = NodePath("../M8")
+
+[node name="M7" type="Marker2D" parent="Enemy"]
+position = Vector2(1129, 238)
+
+[node name="M8" type="Marker2D" parent="Enemy"]
+position = Vector2(1499, 240)
 
 [node name="Player" parent="." instance=ExtResource("2_h8yn1")]
 position = Vector2(473, 446)

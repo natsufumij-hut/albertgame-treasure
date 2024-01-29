@@ -36,7 +36,8 @@ func got_attack(at: int):
 	if hp==0:
 		alive=false
 		dead()
-	got_attacked()
+	else:
+		got_attacked()
 
 func got_attacked():
 	pass

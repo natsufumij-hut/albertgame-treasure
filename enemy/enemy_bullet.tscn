@@ -1,0 +1,157 @@
+[gd_scene load_steps=14 format=3 uid="uid://ckhh6b4j7ns11"]
+
+[ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="1_35tq4"]
+[ext_resource type="Script" path="res://enemy/enemy_bullet.gd" id="1_negrm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqset"]
+atlas = ExtResource("1_35tq4")
+region = Rect2(23, 458, 22, 24)
+
+[sub_resource type="Gradient" id="Gradient_8h8f7"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dwj74"]
+gradient = SubResource("Gradient_8h8f7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qa0m6"]
+particle_flag_disable_z = true
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.5
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_dwj74")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fl8d"]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsily"]
+radius = 6.08276
+
+[sub_resource type="Animation" id="Animation_jt24i"]
+resource_name = "disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjd7g"]
+_data = {
+"disappear": SubResource("Animation_jt24i")
+}
+
+[sub_resource type="Curve" id="Curve_4y2b8"]
+_data = [Vector2(0, 0.734169), 0.0, 0.0, 0, 0, Vector2(0.108553, 0.819921), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ka6i6"]
+curve = SubResource("Curve_4y2b8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x1wpd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_max = 720.0
+spread = 180.0
+flatness = 0.38
+initial_velocity_min = 86.24
+initial_velocity_max = 176.6
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ka6i6")
+color = Color(0, 0, 0, 1)
+
+[node name="EnemyBullet" type="RigidBody2D"]
+collision_layer = 0
+mass = 0.3
+gravity_scale = 0.1
+script = ExtResource("1_negrm")
+dest_pos = Vector2(50, 50)
+speed = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_tqset")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_qa0m6")
+texture = SubResource("AtlasTexture_tqset")
+lifetime = 0.2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6fl8d")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nsily")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sjd7g")
+}
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_x1wpd")
+texture = SubResource("AtlasTexture_tqset")
+lifetime = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="GPUParticles2D2" to="." method="_on_gpu_particles_2d_2_finished"]

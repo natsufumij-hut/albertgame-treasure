@@ -829,6 +829,23 @@ states/tile/node = SubResource("AnimationNodeAnimation_u1m18")
 states/tile/position = Vector2(480, 98)
 transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_6uyxu"), "normal", "hand_item", SubResource("AnimationNodeStateMachineTransition_853w4"), "hand_item", "normal", SubResource("AnimationNodeStateMachineTransition_1d73f"), "normal", "tile", SubResource("AnimationNodeStateMachineTransition_pdpo7"), "tile", "normal", SubResource("AnimationNodeStateMachineTransition_xkj01")]
 
+[sub_resource type="Animation" id="Animation_tk5o0"]
+resource_name = "in_magma"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"inMagma"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_hx1xf"]
 resource_name = "in_water"
 length = 0.1
@@ -867,23 +884,6 @@ tracks/0/keys = {
 "values": [{
 "args": [],
 "method": &"outWater"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_tk5o0"]
-resource_name = "in_magma"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"inMagma"
 }]
 }
 
