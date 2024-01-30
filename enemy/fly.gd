@@ -55,6 +55,9 @@ func orient_to_pos():
 			
 
 func orient_to_enemy():
+	if target_enemy==null:
+		param(actionTree,"EnemyExit",{})
+		return
 	pos=target_enemy.position
 	orient_to_pos()
 	no_speed()

@@ -21,7 +21,7 @@ enum {
 	PUSH_ITEM
 }
 
-const SPECIAL_COLLECT_ITEM : = { "Star": true }
+const SPECIAL_COLLECT_ITEM : = { "Star": true,"Blade":true }
 const TAKARA_BOXS := ["Star", "Coin", "Key/Yellow","Key/Red","Key/Blue","Key/Green"]
 ##map<layer+cord,id>
 var push_store_dict := {}
@@ -91,6 +91,8 @@ func handle_special_collect_item(code: String, player: Player):
 	match code:
 		"Star":
 			PlayerStats.push_heart(1)
+		"Blade":
+			GameSignal.found_blade.emit()
 
 ## 处理干涉形地形
 func handle_push_terrian(layer:int,veci: Vector2i,player: Player, cell: TileData, collision: KinematicCollision2D):

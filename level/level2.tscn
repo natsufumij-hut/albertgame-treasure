@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b3s6tvhj3mq14" path="res://ui/hud.tscn" id="4_c87y7"]
 [ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="6_6w8xe"]
 [ext_resource type="Texture2D" uid="uid://cjiwhry7tdmxo" path="res://asset/bg_castle.png" id="7_jwvy7"]
-[ext_resource type="AudioStream" uid="uid://cchsg4p8q6c6l" path="res://asset/audio/green.mp3" id="7_xefk3"]
+[ext_resource type="AudioStream" uid="uid://n6b4i1txffhk" path="res://asset/audio/slient.mp3" id="9_dcer8"]
 [ext_resource type="PackedScene" uid="uid://bnohktsqnal58" path="res://level/tile_generate_mark.tscn" id="10_o67k5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6txd"]
@@ -39,7 +39,7 @@ layer_2/tile_data = PackedInt32Array(786459, 2, 1, 983075, 2, 1, 1179656, 196609
 layer_3/name = "干涉地形"
 layer_3/tile_data = PackedInt32Array(983077, 393218, 1, 983090, 393218, 1, 458793, 393218, 1, 983100, 393218, 1, 524357, 393218, 1, 262217, 393218, 1, 983053, 393218, 1, 786458, 393218, 1, 1441802, 458752, 0, 1507338, 458752, 0, 1441803, 458752, 0, 1507339, 458752, 0, 1441804, 458752, 0, 1507340, 458752, 0, 1441805, 458752, 0, 1507341, 458752, 0, 1441806, 458752, 0, 1507342, 458752, 0, 1376266, 393216, 11, 1376267, 393216, 11, 1376268, 393216, 11, 1376269, 393216, 11, 1376270, 393216, 11, 1245209, 393218, 1)
 layer_4/name = "可收集道具"
-layer_4/tile_data = PackedInt32Array(655404, 1, 1, 983083, 1, 2, 983071, 262146, 2, 983072, 262146, 2, 720919, 262146, 2, 327719, 262146, 2, 327720, 262146, 2, 983078, 65538, 1, 55, 65538, 0, -131018, 262146, 2, -131017, 262146, 2, 720954, 262146, 2, 720955, 262146, 2, 720953, 262146, 2, 983101, 458754, 1, 983097, 393218, 3, 851979, 262146, 2, 851980, 262146, 2, 851981, 262146, 2, 983060, 65538, 2)
+layer_4/tile_data = PackedInt32Array(655404, 1, 1, 983083, 1, 2, 983071, 262146, 2, 983072, 262146, 2, 720919, 262146, 2, 327719, 262146, 2, 327720, 262146, 2, 983078, 65538, 1, 55, 65538, 0, -131018, 262146, 2, -131017, 262146, 2, 720954, 262146, 2, 720955, 262146, 2, 720953, 262146, 2, 983101, 458754, 1, 983097, 393218, 3, 851979, 262146, 2, 851980, 262146, 2, 851981, 262146, 2, 983060, 65538, 2, 262208, 65538, 1, 983089, 65538, 1, 524316, 65538, 1)
 layer_5/name = "可交互道具"
 layer_5/tile_data = PackedInt32Array(-65461, 458754, 262144)
 layer_6/name = "干涉形道具"
@@ -79,6 +79,10 @@ position = Vector2(3477, 1163)
 position = Vector2(94, 1073)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -150
+limit_top = 500
+limit_right = 5600
+limit_bottom = 1750
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
@@ -122,7 +126,7 @@ position = Vector2(408, 270)
 texture = SubResource("AtlasTexture_mynb2")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_xefk3")
+stream = ExtResource("9_dcer8")
 autoplay = true
 
 [node name="Tricks" type="Node2D" parent="."]

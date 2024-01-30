@@ -69,6 +69,8 @@ func orient_to(vec: Vector2):
 		n.scale.x = 1 if del<0 else -1
 
 func orient_enemy():
+	if enemy_target==null:
+		param(actionTree,"EnemyExit",ENEMY_REVERT)
 	target_pos=enemy_target.global_position
 	orient_to(target_pos)
 	velocity.x=0

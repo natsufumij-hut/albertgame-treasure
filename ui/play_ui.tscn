@@ -80,9 +80,10 @@ stretch_mode = 0
 [node name="Jump" type="TextureButton" parent="PCPlay"]
 custom_minimum_size = Vector2(56, 72)
 layout_mode = 0
-offset_left = 136.0
-offset_top = -136.0
-offset_right = 248.0
+offset_left = 824.0
+offset_top = -32.0
+offset_right = 936.0
+offset_bottom = 104.0
 focus_mode = 0
 texture_normal = SubResource("AtlasTexture_llxse")
 texture_pressed = SubResource("AtlasTexture_3s2tv")
@@ -117,7 +118,7 @@ texture_normal = SubResource("AtlasTexture_kcopm")
 texture_pressed = SubResource("AtlasTexture_6x1ms")
 
 [node name="Jump" type="TouchScreenButton" parent="MobilePlay"]
-position = Vector2(144, -128)
+position = Vector2(832, -24)
 scale = Vector2(4.28571, 3.76471)
 texture_normal = SubResource("AtlasTexture_llxse")
 texture_pressed = SubResource("AtlasTexture_3s2tv")

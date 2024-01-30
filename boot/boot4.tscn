@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpn4ndg4moqru"]
+
+[ext_resource type="Script" path="res://boot/boot.gd" id="1_q81uq"]
+[ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="2_pcfja"]
+[ext_resource type="Script" path="res://level/tile_animated.gd" id="3_lwcuh"]
+[ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="4_fxpee"]
+[ext_resource type="Texture2D" uid="uid://byqmlyof4q6t4" path="res://asset/Backgrounds/bg_grasslands.png" id="5_m4c3n"]
+[ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="6_1e5dg"]
+[ext_resource type="AudioStream" uid="uid://cchsg4p8q6c6l" path="res://asset/audio/green.mp3" id="7_88j1k"]
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="8_gd8xy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exxh4"]
+atlas = ExtResource("6_1e5dg")
+region = Rect2(0, 73, 129, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj2rl"]
+atlas = ExtResource("6_1e5dg")
+region = Rect2(0, 146, 128, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kbgp"]
+atlas = ExtResource("6_1e5dg")
+region = Rect2(0, 146, 128, 71)
+
+[node name="Boot4" type="Node2D"]
+script = ExtResource("1_q81uq")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(35, -1017)
+tile_set = ExtResource("2_pcfja")
+format = 2
+layer_0/name = "地形"
+layer_0/tile_data = PackedInt32Array(1441791, 196612, 0, 1507327, 131076, 1, 1572863, 131076, 1, 1638399, 131076, 1, 1376256, 196612, 0, 1441792, 131076, 1, 1507328, 131076, 1, 1572864, 131076, 1, 1376257, 196612, 0, 1441793, 131076, 1, 1507329, 131076, 1, 1572865, 131076, 1, 1376258, 196612, 0, 1441794, 131076, 1, 1507330, 131076, 1, 1572866, 131076, 1, 1376259, 196612, 0, 1441795, 131076, 1, 1507331, 131076, 1, 1572867, 131076, 1, 1376260, 196612, 0, 1441796, 131076, 1, 1507332, 131076, 1, 1572868, 131076, 1, 1376261, 196612, 0, 1441797, 131076, 1, 1507333, 131076, 1, 1572869, 131076, 1, 1376262, 196612, 0, 1441798, 131076, 1, 1507334, 131076, 1, 1572870, 131076, 1, 1376263, 196612, 0, 1441799, 131076, 1, 1507335, 131076, 1, 1572871, 131076, 1, 1376264, 458756, 1, 1441800, 131076, 1, 1507336, 131076, 1, 1572872, 131076, 1, 1376265, 196612, 0, 1441801, 131076, 1, 1507337, 131076, 1, 1572873, 131076, 1, 1376266, 196612, 0, 1441802, 131076, 1, 1507338, 131076, 1, 1572874, 131076, 1, 1376267, 196612, 0, 1441803, 131076, 1, 1507339, 131076, 1, 1572875, 131076, 1, 1376268, 196612, 0, 1441804, 131076, 1, 1507340, 131076, 1, 1572876, 131076, 1, 1376269, 196612, 0, 1441805, 131076, 1, 1507341, 131076, 1, 1572877, 131076, 1, 1376270, 196612, 0, 1441806, 131076, 1, 1507342, 131076, 1, 1572878, 131076, 1, 1376271, 196612, 0, 1441807, 131076, 1, 1507343, 131076, 1, 1572879, 131076, 1, 1376272, 393220, 0, 1441808, 393220, 1, 1507344, 131076, 1, 1572880, 131076, 1, 1310728, 458756, 0, 1310729, 196612, 0, 1245194, 458756, 0, 1245195, 196612, 0, 1245196, 196612, 0, 1245197, 393220, 0, 1310734, 393220, 0, 1310733, 393220, 1, 1310730, 458756, 1, 1310731, 131076, 1, 1310732, 131076, 1, 917501, 131076, 1, 983037, 131076, 1, 1048573, 131076, 1, 1114109, 131076, 1, 1179645, 131076, 1, 1245181, 131076, 1, 1310717, 131076, 1, 1376253, 131076, 1, 917502, 131076, 1, 983038, 131076, 1, 1048574, 131076, 1, 1114110, 131076, 1, 1179646, 131076, 1, 1245182, 131076, 1, 1310718, 131076, 1, 1376254, 131076, 1, 1441789, 131076, 1, 1507325, 131076, 1, 1572861, 131076, 1, 1638397, 131076, 1, 1441790, 131076, 1, 1507326, 131076, 1, 1572862, 131076, 1, 1638398, 131076, 1)
+layer_1/name = "装饰"
+layer_1/z_index = 2
+layer_1/tile_data = PackedInt32Array(1310722, 65540, 2, 1310723, 262144, 4, 1179659, 4, 2, 1310735, 4, 2, 1245184, 720900, 6, 1245185, 589828, 6, 1179648, 720900, 5, 1179649, 589828, 6, 1245186, 786436, 6, 1179650, 786436, 5, 1114113, 4, 6, 1310721, 131076, 6, 1310724, 196612, 2, 1310725, 131076, 5, 1179660, 4, 4, 1245188, 524292, 6, 1179653, 589828, 6, 1179652, 524292, 6, 1245190, 655364, 6, 1179654, 655364, 6, 1114118, 655364, 6, 1114116, 524292, 6, 1114117, 589828, 5, 1245189, 589828, 5, 1048581, 4, 5, 1310720, 262144, 3)
+layer_2/name = "陷阱"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "干涉地形"
+layer_3/z_index = -1
+layer_3/tile_data = PackedInt32Array(1310728, 851972, 5, 1310734, 589828, 4)
+layer_4/name = "可收集道具"
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = "可交互道具"
+layer_5/tile_data = PackedInt32Array()
+layer_6/name = "干涉形道具"
+layer_6/tile_data = PackedInt32Array()
+script = ExtResource("3_lwcuh")
+
+[node name="TileAnimatedTimer" type="Timer" parent="TileMap"]
+wait_time = 0.5
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("4_fxpee")]
+position = Vector2(262, 394)
+
+[node name="Paral" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Paral"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1500, 700)
+
+[node name="Bg" type="Sprite2D" parent="Paral/Sky"]
+position = Vector2(647, 437)
+scale = Vector2(6.66406, 3.42188)
+texture = ExtResource("5_m4c3n")
+
+[node name="Cloud" type="ParallaxLayer" parent="Paral"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1500, 800)
+
+[node name="Sprite2D" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(80, 364)
+texture = SubResource("AtlasTexture_exxh4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(260, 192)
+texture = SubResource("AtlasTexture_lj2rl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(370, 312)
+texture = SubResource("AtlasTexture_2kbgp")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(438, 472)
+texture = SubResource("AtlasTexture_2kbgp")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(408, 270)
+texture = SubResource("AtlasTexture_2kbgp")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_88j1k")
+autoplay = true
+
+[node name="Tricks" type="Node2D" parent="."]
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="Start" type="Button" parent="hud"]
+offset_left = 4.0
+offset_top = 392.0
+offset_right = 123.0
+offset_bottom = 439.0
+theme = ExtResource("8_gd8xy")
+text = "Start"
+
+[node name="Exit" type="Button" parent="hud"]
+offset_left = 229.0
+offset_top = 391.0
+offset_right = 345.0
+offset_bottom = 438.0
+theme = ExtResource("8_gd8xy")
+text = "Exit
+"
+
+[connection signal="timeout" from="TileMap/TileAnimatedTimer" to="TileMap" method="markAnimated"]
+[connection signal="pressed" from="hud/Start" to="." method="start"]
+[connection signal="pressed" from="hud/Exit" to="." method="exit"]

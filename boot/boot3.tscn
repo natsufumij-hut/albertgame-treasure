@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcx6qpgtyrys3"]
+
+[ext_resource type="Script" path="res://boot/boot.gd" id="1_anyky"]
+[ext_resource type="TileSet" uid="uid://drvfmo2x0n0i" path="res://level/tile_set.tres" id="2_cut67"]
+[ext_resource type="Script" path="res://level/tile_animated.gd" id="3_1bhcf"]
+[ext_resource type="PackedScene" uid="uid://c4eprnllagbxq" path="res://player/player.tscn" id="5_cdqv0"]
+[ext_resource type="Texture2D" uid="uid://cnlqi6jkxchbs" path="res://asset/bg.png" id="6_xi126"]
+[ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="7_ppswk"]
+[ext_resource type="AudioStream" uid="uid://cchsg4p8q6c6l" path="res://asset/audio/green.mp3" id="8_oussa"]
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="9_nb2dk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpe8t"]
+atlas = ExtResource("7_ppswk")
+region = Rect2(0, 73, 129, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cnmo"]
+atlas = ExtResource("7_ppswk")
+region = Rect2(0, 146, 128, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_355uf"]
+atlas = ExtResource("7_ppswk")
+region = Rect2(0, 146, 128, 71)
+
+[node name="Boot3" type="Node2D"]
+script = ExtResource("1_anyky")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(30, -346)
+tile_set = ExtResource("2_cut67")
+format = 2
+layer_0/name = "地形"
+layer_0/tile_data = PackedInt32Array(917504, 655360, 12, 983040, 655360, 12, 917505, 655360, 12, 983041, 655360, 12, 917506, 655360, 12, 983042, 655360, 12, 917507, 655360, 12, 983043, 655360, 12, 917508, 655360, 12, 983044, 655360, 12, 917509, 655360, 12, 983045, 655360, 12, 917510, 655360, 12, 983046, 655360, 12, 917511, 655360, 12, 983047, 655360, 12, 917512, 655360, 12, 983048, 655360, 12, 917513, 655360, 12, 983049, 655360, 12, 917514, 655360, 12, 983050, 655360, 12, 917515, 196608, 2, 983051, 655360, 12, 917516, 131072, 11, 983052, 655360, 12, 917517, 131072, 11, 983053, 655360, 12, 917518, 131072, 11, 983054, 655360, 12, 917519, 196608, 3, 983055, 196608, 2, 983056, 131072, 11, 786432, 131072, 11, 851968, 655360, 12, 786433, 131072, 11, 851969, 655360, 12, 786434, 131072, 11, 851970, 655360, 12, 786435, 131072, 11, 851971, 655360, 12, 786436, 196608, 4, 851972, 655360, 12, 786437, 655360, 12, 851973, 655360, 12, 786438, 655360, 12, 851974, 655360, 12, 786439, 655360, 12, 851975, 655360, 12, 786440, 655360, 12, 851976, 655360, 12, 786441, 196608, 2, 851977, 655360, 12, 786442, 196608, 3, 851978, 196608, 2, 851979, 196608, 3, 720900, 196608, 5, 720901, 131072, 11, 655366, 196608, 5, 655367, 131072, 11, 655368, 196608, 3, 720905, 196608, 3, 720902, 196608, 4, 720904, 196608, 2, 720903, 655360, 12, 1048576, 655360, 12, 1114112, 655360, 12, 1048577, 655360, 12, 1114113, 655360, 12, 1048578, 655360, 12, 1114114, 655360, 12, 1048579, 655360, 12, 1114115, 655360, 12, 1048580, 655360, 12, 1114116, 655360, 12, 1048581, 655360, 12, 1114117, 655360, 12, 1048582, 655360, 12, 1114118, 655360, 12, 1048583, 655360, 12, 1114119, 655360, 12, 1048584, 655360, 12, 1114120, 655360, 12, 1048585, 655360, 12, 1114121, 655360, 12, 1048586, 655360, 12, 1114122, 655360, 12, 1048587, 655360, 12, 1114123, 655360, 12, 1048588, 655360, 12, 1114124, 655360, 12, 1048589, 655360, 12, 1114125, 655360, 12, 1048590, 655360, 12, 1114126, 655360, 12, 1048591, 655360, 12, 1114127, 655360, 12, 1048592, 655360, 12, 1114128, 655360, 12, 524292, 196608, 7, 524291, 196608, 7, 524290, 196608, 8, 524293, 196608, 6, 589837, 196608, 7, 589836, 196608, 8, 589838, 196608, 6, 458750, 655360, 12, 524286, 655360, 12, 589822, 655360, 12, 655358, 655360, 12, 720894, 655360, 12, 786430, 655360, 12, 851966, 655360, 12, 917502, 655360, 12, 983038, 655360, 12, 1048574, 655360, 12, 1114110, 655360, 12, 1179646, 655360, 12, 458751, 655360, 12, 524287, 655360, 12, 589823, 655360, 12, 655359, 655360, 12, 720895, 655360, 12, 786431, 655360, 12, 851967, 655360, 12, 917503, 655360, 12, 983039, 655360, 12, 1048575, 655360, 12, 1114111, 655360, 12, 1179647, 655360, 12, 589833, 196608, 9, 458754, 589824, 2, 458755, 589824, 1)
+layer_1/name = "装饰"
+layer_1/tile_data = PackedInt32Array(851980, 2, 0, 720914, 2, 0, 524302, 262146, 0, 720896, 262144, 3, 720898, 262144, 4)
+layer_2/name = "陷阱"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "干涉地形"
+layer_3/tile_data = PackedInt32Array(458757, 393218, 1)
+layer_4/name = "可收集道具"
+layer_4/tile_data = PackedInt32Array()
+layer_5/name = "可交互道具"
+layer_5/tile_data = PackedInt32Array()
+layer_6/name = "干涉形道具"
+layer_6/tile_data = PackedInt32Array(327691, 0, 1, 524311, 0, 1, 327682, 0, 1, 327683, 0, 1)
+script = ExtResource("3_1bhcf")
+
+[node name="TileAnimatedTimer" type="Timer" parent="TileMap"]
+wait_time = 0.5
+autostart = true
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(16, -411)
+
+[node name="Player" parent="." instance=ExtResource("5_cdqv0")]
+position = Vector2(271, 338)
+
+[node name="bullets" type="Node2D" parent="."]
+
+[node name="Paral" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Paral"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1500, 700)
+
+[node name="Bg" type="Sprite2D" parent="Paral/Sky"]
+position = Vector2(647, 437)
+scale = Vector2(6.66406, 3.42188)
+texture = ExtResource("6_xi126")
+
+[node name="Cloud" type="ParallaxLayer" parent="Paral"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1500, 800)
+
+[node name="Sprite2D" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(80, 364)
+texture = SubResource("AtlasTexture_wpe8t")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(260, 192)
+texture = SubResource("AtlasTexture_5cnmo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(370, 312)
+texture = SubResource("AtlasTexture_355uf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(438, 472)
+texture = SubResource("AtlasTexture_355uf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Paral/Cloud"]
+position = Vector2(408, 270)
+texture = SubResource("AtlasTexture_355uf")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_oussa")
+autoplay = true
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="Start" type="Button" parent="hud"]
+offset_left = -2.0
+offset_top = 426.0
+offset_right = 117.0
+offset_bottom = 473.0
+theme = ExtResource("9_nb2dk")
+text = "Start"
+
+[node name="Exit" type="Button" parent="hud"]
+offset_left = 173.0
+offset_top = 427.0
+offset_right = 289.0
+offset_bottom = 474.0
+theme = ExtResource("9_nb2dk")
+text = "Exit
+"
+
+[connection signal="timeout" from="TileMap/TileAnimatedTimer" to="TileMap" method="markAnimated"]
+[connection signal="pressed" from="hud/Start" to="." method="start"]
+[connection signal="pressed" from="hud/Exit" to="." method="exit"]

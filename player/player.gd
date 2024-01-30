@@ -29,6 +29,7 @@ const REVERT_INV_LIST :Dictionary = {"InWater": true,"OutWater": true}
 
 func _ready() -> void:
 	PlayerAsset.use_item.connect(hand_use)
+	PlayerStats.player_dead.connect(player_dead)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -142,6 +143,9 @@ func inWater():
 func inMagma():
 	damage_temp=PlayerStats.hp
 	param(stateTree,"Attacked",{})
+
+func player_dead():
+	velocity.x=0
 
 func outWater():
 	speed=SPEED

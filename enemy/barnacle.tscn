@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c1ib3r8sr3upa"]
+[gd_scene load_steps=38 format=3 uid="uid://c1ib3r8sr3upa"]
 
 [ext_resource type="Script" path="res://enemy/barnacle.gd" id="1_6j8sf"]
 [ext_resource type="Texture2D" uid="uid://bpoeci06u2ltu" path="res://asset/Enemy sprites/barnacle.png" id="1_lj5th"]
@@ -328,6 +328,10 @@ advance_condition = &"Dead"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3mtbu"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3u0jj"]
+advance_mode = 2
+advance_condition = &"Dead"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a8vui"]
 states/attacked/node = SubResource("AnimationNodeAnimation_r074w")
 states/attacked/position = Vector2(444, 208)
@@ -335,7 +339,7 @@ states/dead/node = SubResource("AnimationNodeAnimation_otaqs")
 states/dead/position = Vector2(615, 89)
 states/normal/node = SubResource("AnimationNodeAnimation_8np0j")
 states/normal/position = Vector2(338, 100)
-transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_uung8"), "normal", "attacked", SubResource("AnimationNodeStateMachineTransition_utqkv"), "attacked", "normal", SubResource("AnimationNodeStateMachineTransition_r8wbo"), "attacked", "dead", SubResource("AnimationNodeStateMachineTransition_wrchy"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_3mtbu")]
+transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_uung8"), "normal", "attacked", SubResource("AnimationNodeStateMachineTransition_utqkv"), "attacked", "normal", SubResource("AnimationNodeStateMachineTransition_r8wbo"), "attacked", "dead", SubResource("AnimationNodeStateMachineTransition_wrchy"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_3mtbu"), "normal", "dead", SubResource("AnimationNodeStateMachineTransition_3u0jj")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lk6bd"]
 size = Vector2(445, 229)

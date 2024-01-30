@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://2j11h5hs6vq4"]
+[gd_scene load_steps=53 format=3 uid="uid://2j11h5hs6vq4"]
 
 [ext_resource type="Script" path="res://enemy/fly.gd" id="1_1r67u"]
 [ext_resource type="Texture2D" uid="uid://t6w07ggn24s7" path="res://asset/Enemy sprites/fly_dead.png" id="1_7kli3"]
@@ -38,6 +38,23 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sr0fu"]
 radius = 13.0
 height = 29.9933
+
+[sub_resource type="Animation" id="Animation_mnibx"]
+resource_name = "attack"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"boot_bullet"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hvyl0"]
 tracks/0/type = "value"
@@ -154,64 +171,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_rp1kv"]
-resource_name = "orient_enemy"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:parameters/conditions/EnemyEnter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:parameters/conditions/EnemyExit")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"orient_to_enemy"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_mnibx"]
-resource_name = "attack"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"boot_bullet"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_s2snd"]
 resource_name = "move_to_from"
 length = 0.2
@@ -317,6 +276,47 @@ tracks/3/keys = {
 "values": [{
 "args": [],
 "method": &"move_to_right"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rp1kv"]
+resource_name = "orient_enemy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:parameters/conditions/EnemyEnter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:parameters/conditions/EnemyExit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"orient_to_enemy"
 }]
 }
 
@@ -429,6 +429,21 @@ states/Patrol/node = SubResource("AnimationNodeStateMachine_1t4bl")
 states/Patrol/position = Vector2(383, 100)
 transitions = ["Start", "Patrol", SubResource("AnimationNodeStateMachineTransition_lrtxn"), "Patrol", "Attack", SubResource("AnimationNodeStateMachineTransition_yl0tr"), "Attack", "Patrol", SubResource("AnimationNodeStateMachineTransition_av2sn"), "Patrol", "End", SubResource("AnimationNodeStateMachineTransition_bpw26"), "Attack", "End", SubResource("AnimationNodeStateMachineTransition_7eb64")]
 
+[sub_resource type="Animation" id="Animation_8mnkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_gaahx"]
 resource_name = "attacked"
 length = 0.3
@@ -455,21 +470,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_8mnkf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../AnimatedSprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_m1mc8"]
@@ -589,14 +589,18 @@ advance_condition = &"Dead"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vijpb"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4f00p"]
+advance_mode = 2
+advance_condition = &"Dead"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s6sx8"]
 states/attacked/node = SubResource("AnimationNodeAnimation_vb04b")
-states/attacked/position = Vector2(503, 100)
+states/attacked/position = Vector2(338, 214)
 states/dead/node = SubResource("AnimationNodeAnimation_33ou0")
 states/dead/position = Vector2(708, 100)
 states/normal/node = SubResource("AnimationNodeAnimation_u8ws8")
 states/normal/position = Vector2(338, 100)
-transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_hmq7r"), "normal", "attacked", SubResource("AnimationNodeStateMachineTransition_as75c"), "attacked", "normal", SubResource("AnimationNodeStateMachineTransition_b4brb"), "attacked", "dead", SubResource("AnimationNodeStateMachineTransition_dgeue"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_vijpb")]
+transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_hmq7r"), "normal", "attacked", SubResource("AnimationNodeStateMachineTransition_as75c"), "attacked", "normal", SubResource("AnimationNodeStateMachineTransition_b4brb"), "attacked", "dead", SubResource("AnimationNodeStateMachineTransition_dgeue"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_vijpb"), "normal", "dead", SubResource("AnimationNodeStateMachineTransition_4f00p")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ftj3"]
 size = Vector2(552, 180)
@@ -609,7 +613,6 @@ revert_node = [NodePath("Shoot")]
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_trnx8")
 animation = &"move"
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 5)
@@ -627,8 +630,8 @@ parameters/conditions/Dead = false
 parameters/conditions/EnemyEnter = false
 parameters/conditions/EnemyExit = false
 parameters/Patrol/conditions/MoveEnd = false
-parameters/Patrol/conditions/MoveLeft = false
-parameters/Patrol/conditions/MoveRight = true
+parameters/Patrol/conditions/MoveLeft = true
+parameters/Patrol/conditions/MoveRight = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="actionTree"]
 libraries = {

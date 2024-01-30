@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b4nmw2lpleqln"]
+[gd_scene load_steps=58 format=3 uid="uid://b4nmw2lpleqln"]
 
 [ext_resource type="Texture2D" uid="uid://7ljyor76moip" path="res://asset/Enemy sprites/slimeBlue_dead.png" id="1_41olm"]
 [ext_resource type="Script" path="res://enemy/slim.gd" id="1_oajf5"]
@@ -574,6 +574,10 @@ advance_condition = &"Dead"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_83b11"]
+advance_mode = 2
+advance_condition = &"Dead"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6g227"]
 states/attacked/node = SubResource("AnimationNodeAnimation_qs8bl")
 states/attacked/position = Vector2(419, 205)
@@ -581,7 +585,7 @@ states/dead/node = SubResource("AnimationNodeAnimation_b1mab")
 states/dead/position = Vector2(598, 100)
 states/normal/node = SubResource("AnimationNodeAnimation_f58yf")
 states/normal/position = Vector2(419, 100)
-transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_b58xi"), "normal", "attacked", SubResource("AnimationNodeStateMachineTransition_x1jfr"), "attacked", "normal", SubResource("AnimationNodeStateMachineTransition_11oyo"), "attacked", "dead", SubResource("AnimationNodeStateMachineTransition_t6qwq"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_r7o5o")]
+transitions = ["Start", "normal", SubResource("AnimationNodeStateMachineTransition_b58xi"), "normal", "attacked", SubResource("AnimationNodeStateMachineTransition_x1jfr"), "attacked", "normal", SubResource("AnimationNodeStateMachineTransition_11oyo"), "attacked", "dead", SubResource("AnimationNodeStateMachineTransition_t6qwq"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_r7o5o"), "normal", "dead", SubResource("AnimationNodeStateMachineTransition_83b11")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdtlf"]
 radius = 8.0

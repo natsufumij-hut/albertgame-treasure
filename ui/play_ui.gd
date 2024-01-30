@@ -12,6 +12,7 @@ func _ready() -> void:
 		$PCPlay.visible = false
 	PlayerAsset.trick_on.connect(trigger_use)
 	PlayerAsset.trick_off.connect(clear_use)
+	PlayerStats.player_dead.connect(player_dead)
 	GameSignal.log.connect(log_info)
 	
 func _on_leff_button_down() -> void:
@@ -80,3 +81,6 @@ func use_door(store: String):
 		return
 	var level = store.to_int()
 	GameSignal.new_level.emit(level)
+
+func player_dead():
+	visible = false

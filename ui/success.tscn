@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc0rmo2d1kv5e"]
+
+[ext_resource type="Theme" uid="uid://bko3k53nhg4rq" path="res://ui/items_label.tres" id="1_fvj0n"]
+[ext_resource type="Texture2D" uid="uid://c82mpw81ho4v1" path="res://asset/tiles_spritesheet.png" id="2_s5o5d"]
+[ext_resource type="Texture2D" uid="uid://ph58hdih3cmf" path="res://asset/items_spritesheet.png" id="3_e5w8n"]
+[ext_resource type="Script" path="res://ui/success.gd" id="3_i15ik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x82oi"]
+atlas = ExtResource("2_s5o5d")
+region = Rect2(0, 432, 70, 70)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_71wff"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 20, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40vij"]
+atlas = ExtResource("3_e5w8n")
+region = Rect2(0, 530, 21, 21)
+
+[node name="Success" type="NinePatchRect"]
+offset_right = 549.0
+offset_bottom = 203.0
+theme = ExtResource("1_fvj0n")
+texture = SubResource("AtlasTexture_x82oi")
+region_rect = Rect2(0, 0, 70, 70)
+patch_margin_left = 14
+patch_margin_top = 15
+patch_margin_right = 11
+patch_margin_bottom = 13
+script = ExtResource("3_i15ik")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 37.0
+offset_right = 458.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 42
+text = "You Found Blade!!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 135.0
+offset_right = 232.0
+offset_bottom = 182.0
+text = "Close"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 135.0
+offset_right = 482.0
+offset_bottom = 182.0
+text = "Exit"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(3, 1)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_71wff")
+texture = SubResource("AtlasTexture_40vij")
+lifetime = 0.2
+one_shot = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(543, 10)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_71wff")
+texture = SubResource("AtlasTexture_40vij")
+lifetime = 0.6
+one_shot = true
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+position = Vector2(3, 204)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_71wff")
+texture = SubResource("AtlasTexture_40vij")
+lifetime = 0.6
+one_shot = true
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="."]
+position = Vector2(545, 206)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_71wff")
+texture = SubResource("AtlasTexture_40vij")
+lifetime = 0.6
+one_shot = true
+
+[connection signal="pressed" from="Button" to="." method="close"]
+[connection signal="pressed" from="Button2" to="." method="exit"]
